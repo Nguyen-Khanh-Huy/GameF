@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-public class LayerListAttribute : PropertyAttribute
+namespace PIS.PlatformGame
 {
+    public class LayerListAttribute : PropertyAttribute
+    {
 
 
+    }
 }

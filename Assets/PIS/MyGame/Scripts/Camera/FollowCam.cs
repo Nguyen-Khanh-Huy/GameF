@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowCam : MonoBehaviour
-{/*
+namespace PIS.PlatformGame
+{
+    public class FollowCam : MonoBehaviour
+    {/*
     public Direction dir;
     private Camera m_cam;
     private Vector3 m_startingPos;
@@ -59,4 +61,6 @@ public class FollowCam : MonoBehaviour
                 break;
         }    
     }*/
+    }
+
 }

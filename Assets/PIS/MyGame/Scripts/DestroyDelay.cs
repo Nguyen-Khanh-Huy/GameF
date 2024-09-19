@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyDelay : MonoBehaviour
+namespace PIS.PlatformGame
 {
-    public float timeToDestroy;
-    public bool isOverride;
-
-    private void Awake()
+    public class DestroyDelay : MonoBehaviour
     {
-        if(!isOverride)
-            DestroyObj();
+        public float timeToDestroy;
+        public bool isOverride;
+
+        private void Awake()
+        {
+            if (!isOverride)
+                DestroyObj();
+        }
+
+        public void DestroyObj()
+        {
+            Destroy(gameObject, timeToDestroy);
+        }
     }
 
-    public void DestroyObj()
-    {
-        Destroy(gameObject, timeToDestroy);
-    }
 }
