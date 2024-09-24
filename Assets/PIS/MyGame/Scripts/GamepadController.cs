@@ -51,7 +51,7 @@ namespace PIS.PlatformGame
                 _canMoveDown = vertCheck < 0 ? true : false;
 
                 _canJump = Input.GetKeyDown(KeyCode.Space);
-                _canFly = Input.GetKeyDown(KeyCode.F);
+                _canFly = Input.GetKey(KeyCode.F);
 
                 _canFire = Input.GetKeyDown(KeyCode.C);
                 _canAttack = Input.GetKeyDown(KeyCode.V);
@@ -73,7 +73,7 @@ namespace PIS.PlatformGame
             }
             else
             {
-
+                // Xu ly moble
             }
         }
     }

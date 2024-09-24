@@ -18,7 +18,7 @@ namespace PIS.PlatformGame
         [LayerList] public int deadLayer;
 
         [Header("Reference:")]
-        [SerializeField] private Animator _anim;
+        [SerializeField] protected Animator _anim;
         protected Rigidbody2D _rb;
 
         [Header("VFX:")]
@@ -43,6 +43,7 @@ namespace PIS.PlatformGame
             _rb = GetComponent<Rigidbody2D>();
             if(_rb)
                 _startingGravity = _rb.gravityScale;
+            if (stat == null) return;
             _curHp = stat.hp;
             _curSpeed = stat.moveSpeed;
         }

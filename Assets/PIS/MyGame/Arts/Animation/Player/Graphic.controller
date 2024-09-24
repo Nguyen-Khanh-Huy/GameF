@@ -367,7 +367,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_Ladder
+  m_Name: LadderIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -449,7 +449,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 4241188123500203528}
+  m_DefaultState: {fileID: -8822056602609174579}
 --- !u!1102 &9190753044371794636
 AnimatorState:
   serializedVersion: 6

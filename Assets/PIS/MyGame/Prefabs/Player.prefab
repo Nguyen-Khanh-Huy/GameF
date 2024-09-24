@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 5974523064571170041}
   - component: {fileID: 1585437074361666029}
   - component: {fileID: 8981575243581604013}
+  - component: {fileID: 8025144911386448037}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -225,6 +226,31 @@ CapsuleCollider2D:
   m_Offset: {x: 0.19879904, y: 0.04455803}
   m_Size: {x: 1.5193353, y: 1.2382867}
   m_Direction: 1
+--- !u!114 &8025144911386448037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172800769933031765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb11edf067b7f7c45bb2ad0d88e4e228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: b2e49b27f61692a43bd51594f027f750, type: 2}
+  normalLayer: 8
+  invincibleLayer: 9
+  deadLayer: 10
+  _anim: {fileID: 3321840860462125065}
+  deadVfx: {fileID: 0}
+  jumpFallMultipiler: 2.5
+  jumpLowMultipiler: 2.5
+  sp: {fileID: 0}
+  obstacle: {fileID: 539891878509361925}
+  defaulCol: {fileID: 5974523064571170041}
+  flyingCol: {fileID: 1585437074361666029}
+  inWaterCol: {fileID: 8981575243581604013}
 --- !u!1 &8598123573911460731
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,7 +62,7 @@ namespace PIS.PlatformGame
         Ladder,
         Dead,
         Idle,
-        Idle_Ladder,
+        LadderIdle,
         GotHit
     }
     public enum EnemyAnimState
