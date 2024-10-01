@@ -18,11 +18,12 @@ namespace PIS.PlatformGame
         [LayerList] public int deadLayer;
 
         [Header("Reference:")]
-        [SerializeField] protected Animator _anim;
+        [SerializeField] 
+        protected Animator _anim;
         protected Rigidbody2D _rb;
 
         [Header("VFX:")]
-        public GameObject deadVfx;
+        public GameObject deadVfxPb;
 
         protected Actor _whoHit;
 
@@ -126,7 +127,7 @@ namespace PIS.PlatformGame
 
             }
         }
-        protected void ReduceActionRate(ref bool isActed, ref float curTime, float startingTime)
+        protected void DelayActionRate(ref bool isActed, ref float curTime, float startingTime)
         {// time delay
             if (isActed)
             {

@@ -21,11 +21,11 @@ namespace PIS.PlatformGame
         public CapsuleCollider2D flyingCol;
         public CapsuleCollider2D inWaterCol;
 
-        private PlayerStat _curStat;
-        private PlayerAnimState _prevState; // luu lai trang thai truoc do, khi chuyen tt moi
+        private PlayerStat _playerStat;
+        private PlayerAnimState _prevState; // luu lai tthai truoc do, khi chuyen tthai moi
         private float _waterFallTime = 1f; // time cho phep khi o duoi nuoc
         private float _attackTime; // tgian tre khi tan cong
-        private bool isAttacked; // da tan cong hay chua
+        private bool _isAttacked; // da tan cong hay chua
 
         private bool IsDead
         {
@@ -54,6 +54,10 @@ namespace PIS.PlatformGame
         {
             ActionHandle();
         }
+        private void FixedUpdate()
+        {
+            SmoothJump();
+        }
         private void ActionHandle()
         {
             if (IsAttacking || _isKnockBack) return;
@@ -65,13 +69,18 @@ namespace PIS.PlatformGame
             {
                 ChangeState(PlayerAnimState.LadderIdle);
             }
+            if (!obstacle.IsOnWater)
+            {
+                AttackCheck();
+            }
+            DelayActionRate(ref _isAttacked, ref _attackTime, _playerStat.attackRate);
         }
         protected override void Init()
         {
             base.Init();
             if(stat != null)
             {
-                _curStat = (PlayerStat)stat;
+                _playerStat = (PlayerStat)stat;
             }
         }
         protected override void Dead()
@@ -130,7 +139,30 @@ namespace PIS.PlatformGame
             _rb.velocity = new Vector2(_rb.velocity.x, 0f);
             _rb.isKinematic = false;
             _rb.gravityScale = _startingGravity;
-            _rb.velocity = new Vector2(_rb.velocity.x, _curStat.jumpForce);
+            _rb.velocity = new Vector2(_rb.velocity.x, _playerStat.jumpForce);
+        }
+        private void SmoothJump()
+        {
+            if (obstacle.IsOnGround || obstacle.IsOnWater && IsJumping) return;
+            if(_rb.velocity.y < 0)
+            {
+                _rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultipiler - 1) * Time.deltaTime;
+            }
+            else if(_rb.velocity.y > 0 && !GamepadController.Ins.IsJumpHolding)
+            {
+                _rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpLowMultipiler - 1) * Time.deltaTime;
+            }
+        }
+        private void AttackCheck()
+        {
+            if (GamepadController.Ins.CanAttack)
+            {
+                if (_isAttacked) return;
+                    ChangeState(PlayerAnimState.Attack);
+            }else if (GamepadController.Ins.CanFire)
+            {
+                ChangeState(PlayerAnimState.Shoot);
+            }
         }
         private void HozMoveCheck()
         {
@@ -211,7 +243,7 @@ namespace PIS.PlatformGame
         }
         private void Jump_Update() {
             _rb.isKinematic = false;
-            if(_rb.velocity.y < 0 && !obstacle.IsOnGround)
+            if(_rb.velocity.y < -2 && !obstacle.IsOnGround)
             {
                 ChangeState(PlayerAnimState.OnAir);
             }
@@ -252,7 +284,7 @@ namespace PIS.PlatformGame
         }
         private void Land_Exit() { }
         private void Swim_Enter() {
-            _curSpeed = _curStat.swimSpeed;
+            _curSpeed = _playerStat.swimSpeed;
             ActiveCol(PlayerCollider.InWater);
         }
         private void Swim_Update() {
@@ -265,13 +297,19 @@ namespace PIS.PlatformGame
         private void Swim_Exit() {
             _waterFallTime = 1f;
         }
-        private void Shoot_Enter() { }
+        private void Shoot_Enter() {
+            ChangeStateDelay(PlayerAnimState.Idle);
+        }
         private void Shoot_Update() {
             Helper.PlayAnim(_anim, PlayerAnimState.Shoot.ToString());
         }
         private void Shoot_Exit() { }
-        private void Attack_Enter() { }
+        private void Attack_Enter() {
+            _isAttacked = true;
+            ChangeStateDelay(PlayerAnimState.Idle);
+        }
         private void Attack_Update() {
+            _rb.velocity = Vector2.zero;
             Helper.PlayAnim(_anim, PlayerAnimState.Attack.ToString());
         }
         private void Attack_Exit() { }
@@ -280,7 +318,7 @@ namespace PIS.PlatformGame
             ChangeStateDelay(PlayerAnimState.FlyOnAir);
         }
         private void Fly_Update() {
-            _rb.velocity = new Vector2(_rb.velocity.x, -_curStat.flyingSpeed);
+            _rb.velocity = new Vector2(_rb.velocity.x, -_playerStat.flyingSpeed);
             if (obstacle.IsOnWater)
             {
                 _rb.velocity = new Vector2(0f, _rb.velocity.y);
@@ -294,7 +332,7 @@ namespace PIS.PlatformGame
             ActiveCol(PlayerCollider.Flying);
         }
         private void FlyOnAir_Update() {
-            _rb.velocity = new Vector2(_rb.velocity.x, -_curStat.flyingSpeed);
+            _rb.velocity = new Vector2(_rb.velocity.x, -_playerStat.flyingSpeed);
             if (obstacle.IsOnGround)
             {
                 ChangeState(PlayerAnimState.Land);
@@ -314,7 +352,7 @@ namespace PIS.PlatformGame
         private void FlyOnAir_Exit() { }
         private void SwimOnDeep_Enter() {
             ActiveCol(PlayerCollider.InWater);
-            _curSpeed = _curStat.swimSpeed;
+            _curSpeed = _playerStat.swimSpeed;
             _rb.velocity = Vector2.zero;
         }
         private void SwimOnDeep_Update() {
@@ -332,11 +370,15 @@ namespace PIS.PlatformGame
             ActiveCol(PlayerCollider.Default);
         }
         private void Ladder_Update() {
-            if(!GamepadController.Ins.CanMoveUp && !GamepadController.Ins.CanMoveDown)
+            if (GamepadController.Ins.CanMoveUp || GamepadController.Ins.CanMoveDown && !GamepadController.Ins.CanMoveLeft && !GamepadController.Ins.CanMoveRight)
+            {
+                _rb.velocity = new Vector2(0f, _rb.velocity.y);
+            }
+            if (!GamepadController.Ins.CanMoveUp && !GamepadController.Ins.CanMoveDown)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, 0f);
                 ChangeState(PlayerAnimState.LadderIdle);
-            }
+            }            
             if (!obstacle.IsOnLadder) 
             {
                 ChangeState(PlayerAnimState.OnAir);
@@ -367,7 +409,7 @@ namespace PIS.PlatformGame
         private void Idle_Exit() { }
         private void LadderIdle_Enter() {
             _rb.velocity = Vector2.zero;
-            _curSpeed = _curStat.ladderSpeed;
+            _curSpeed = _playerStat.ladderSpeed;
             ActiveCol(PlayerCollider.Default);
         }
         private void LadderIdle_Update() {
