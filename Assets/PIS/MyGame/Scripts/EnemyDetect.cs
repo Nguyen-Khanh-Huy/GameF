@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PIS.PlatformGame
 {
-    public class PlayerDetect : MonoBehaviour
+    public class EnemyDetect : MonoBehaviour
     {
         public bool disable;
         public Detect detect;
@@ -45,6 +45,7 @@ namespace PIS.PlatformGame
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + detectDist, transform.position.y, transform.position.z));
+                Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - detectDist, transform.position.y, transform.position.z));
             }else if(detect == Detect.CircleOverlap)
             {
                 Gizmos.color = Helper.ChangAlpha(Color.green, 0.2f);

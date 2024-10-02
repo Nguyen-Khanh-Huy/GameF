@@ -8,7 +8,7 @@ namespace PIS.PlatformGame
     {
         [Header("Common:")]
         public int hp;
-        public int moveSpeed;
+        public float moveSpeed;
         public int damage;
         [Header("Invincible:")]
         public float knockBackTime;

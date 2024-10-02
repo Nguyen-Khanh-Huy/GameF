@@ -10,7 +10,7 @@ namespace PIS.PlatformGame
         [Header("Moving: ")]
         public float movingDist;
 
-        protected PlayerDetect _playerDetect;
+        protected EnemyDetect _enemyDetect;
         protected EnemyStat _enemyStat;
         protected Vector2 _movingDir;
         protected Vector2 _movingDirBack;
@@ -22,7 +22,7 @@ namespace PIS.PlatformGame
         protected override void Awake()
         {
             base.Awake();
-            _playerDetect = GetComponent<PlayerDetect>();
+            _enemyDetect = GetComponent<EnemyDetect>();
             _startingPos = transform.position;
         }
         public override void Start()
@@ -37,7 +37,7 @@ namespace PIS.PlatformGame
                 _fsm.ChangeState(EnemyAnimState.Dead);
             }
             if (_isKnockBack || IsDead) return;
-            if (_playerDetect.IsDetected)
+            if (_enemyDetect.IsDetected)
             {
                 _fsm.ChangeState(EnemyAnimState.Chasing);
             }
@@ -86,9 +86,9 @@ namespace PIS.PlatformGame
             base.Dead();
             _fsm.ChangeState(EnemyAnimState.Dead);
         }        
-        protected void GetTargetDir()
+        protected void GetTargetDir() // huong den player
         {
-            _targetDir = _playerDetect.Target.transform.position - transform.position;
+            _targetDir = _enemyDetect.Target.transform.position - transform.position;
             _targetDir.Normalize();
         }
 

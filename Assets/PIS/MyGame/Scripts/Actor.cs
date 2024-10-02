@@ -104,12 +104,14 @@ namespace PIS.PlatformGame
                     if(transform.localScale.x > 0)
                     {
                         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                        _isFaceLeft = true;
                     }
                     break;
                 case Diretion.Right:
                     if (transform.localScale.x < 0)
                     {
                         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                        _isFaceLeft = false;
                     }
                     break;
                 case Diretion.Up:

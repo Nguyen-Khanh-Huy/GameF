@@ -243,9 +243,9 @@ MonoBehaviour:
   invincibleLayer: 9
   deadLayer: 10
   _anim: {fileID: 3321840860462125065}
-  deadVfx: {fileID: 0}
-  jumpFallMultipiler: 2.5
-  jumpLowMultipiler: 2.5
+  deadVfxPb: {fileID: 0}
+  jumpFallMultipiler: 5
+  jumpLowMultipiler: 5
   sp: {fileID: 0}
   obstacle: {fileID: 539891878509361925}
   defaulCol: {fileID: 5974523064571170041}
