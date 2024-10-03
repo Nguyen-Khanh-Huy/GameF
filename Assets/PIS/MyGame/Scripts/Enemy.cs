@@ -12,7 +12,7 @@ namespace PIS.PlatformGame
 
         protected EnemyDetect _enemyDetect;
         protected EnemyStat _enemyStat;
-        protected Vector2 _movingDir;
+        protected Vector2 _movingDir; // huong
         protected Vector2 _movingDirBack;
         protected Vector2 _startingPos; // vi tri bat dau
         protected Vector2 _targetDir; // huong den player
