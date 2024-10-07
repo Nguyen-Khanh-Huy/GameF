@@ -33,7 +33,7 @@ namespace PIS.PlatformGame
         protected float _startingGravity; // trong luc trai dat
         protected bool _isFaceLeft;
         protected float _curSpeed;
-        protected int _hoz, _vert;
+        protected int _hozDir, _vertDir;
 
         public int CurHp { get => _curHp; set => _curHp = value; }
         public float CurSpeed { get => _curSpeed; }
@@ -92,9 +92,26 @@ namespace PIS.PlatformGame
             _isInvincible = false;
             gameObject.layer = normalLayer;
         }
-        protected void KnockBackMove()
+        protected void KnockBackMove(float yRate)
         {
-            // xu ly viec bi day lui khi nhan sat thuong
+            if(_whoHit == null)
+            {// ko nhan dame tu nv khac. chi nhan dame tu chuong ngai vat
+                _vertDir = _vertDir == 0 ? 1 : _vertDir;
+                _rb.velocity = new Vector2(_hozDir * -stat.knockBackForce, (_vertDir * 0.55f) * stat.knockBackForce);
+            }
+            else
+            {// nhan dame tu nv khac. ko nhan dame tu chuong ngai vat
+                Vector2 dir = _whoHit.transform.position - transform.position;
+                dir.Normalize();
+                if(dir.x > 0)
+                {
+                    _rb.velocity = new Vector2(-stat.knockBackForce, yRate * stat.knockBackForce);
+                }
+                else if(dir.x < 0)
+                {
+                    _rb.velocity = new Vector2(stat.knockBackForce, yRate * stat.knockBackForce);
+                }
+            }
         }
         protected void Flip(Diretion moveDir)
         {

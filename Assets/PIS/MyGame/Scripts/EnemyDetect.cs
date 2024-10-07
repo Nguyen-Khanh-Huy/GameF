@@ -37,7 +37,7 @@ namespace PIS.PlatformGame
                 Collider2D col = Physics2D.OverlapCircle(transform.position, detectDist, targetLayer);
                 _isDetected = col;
             }
-            if (_isDetected) { Debug.Log("Da va cham"); }
+            //if (_isDetected) { Debug.Log("Da va cham"); }
         }
         private void OnDrawGizmos()
         {

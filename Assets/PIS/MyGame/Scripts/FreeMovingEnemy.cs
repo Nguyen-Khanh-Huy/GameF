@@ -56,16 +56,19 @@ namespace PIS.PlatformGame
             {
                 if (canRotate)
                 {
-                    angle = Mathf.Clamp(angle, -41, 41);
+                    //angle = Mathf.Clamp(angle, -41, 41);
+                    angle = Mathf.Clamp(angle, -89, 89);
                     transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 }
                 Flip(Diretion.Right);
-            } else if (_movingDir.x < 0)
+            } 
+            else if (_movingDir.x < 0)
             {
                 if (canRotate)
                 {
                     float newAngle = angle + 180f;
-                    newAngle = Mathf.Clamp(newAngle, 25, 325);
+                    //newAngle = Mathf.Clamp(newAngle, 25, 325);
+                    newAngle = Mathf.Clamp(newAngle, 0, 360);
                     transform.rotation = Quaternion.Euler(0f, 0f, newAngle);
                 }
                 Flip(Diretion.Left);
@@ -74,6 +77,7 @@ namespace PIS.PlatformGame
         }
         private void DestReachedChecking()
         {
+            //Debug.Log(Vector2.Distance(transform.position, _movingPos));
             if(Vector2.Distance(transform.position, _movingPos) <= 0.5f)
             {
                 _haveMovingPos = false;
@@ -90,10 +94,11 @@ namespace PIS.PlatformGame
             base.Moving_Enter();
             FindMaxMovePos();
             _haveMovingPos = false;
+            //Debug.Log(_movingDir);
         }
-        protected override void Chasing_Enter()
+        protected override void Chasing_Update()
         {
-            base.Chasing_Enter();
+            base.Chasing_Update();
             _movingDir = _targetDir;
         }
         protected override void GotHit_Update()
@@ -123,6 +128,8 @@ namespace PIS.PlatformGame
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + movingDist, transform.position.z));
 
+            Gizmos.color = Helper.ChangAlpha(Color.black, 0.5f);
+            Gizmos.DrawSphere(_movingPos, 0.2f);
         }
     }
 

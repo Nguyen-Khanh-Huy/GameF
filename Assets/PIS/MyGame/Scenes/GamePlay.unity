@@ -468,7 +468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &662683378
 Transform:
   m_ObjectHideFlags: 0
@@ -742,8 +742,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773258569322080058, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6182406649749187003, guid: 4190b28e8dc1fbf4889382cf2080b594, type: 3}
       propertyPath: m_LocalPosition.x
@@ -899,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 7212551655898656872, guid: 8e0629ecebe62ae42b9cfc160a209b40, type: 3}
       propertyPath: m_Name
       value: Water_Deep
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212551655898656872, guid: 8e0629ecebe62ae42b9cfc160a209b40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1428,6 +1452,10 @@ PrefabInstance:
     - target: {fileID: 8339305435583381218, guid: 4df5199a641082848a15da671d92f913, type: 3}
       propertyPath: m_Name
       value: Water_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339305435583381218, guid: 4df5199a641082848a15da671d92f913, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

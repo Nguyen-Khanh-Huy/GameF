@@ -96,12 +96,12 @@ namespace PIS.PlatformGame
             if(dir == Diretion.Left || dir == Diretion.Right)
             {
                 Flip(dir);
-                _hoz = dir == Diretion.Left ? -1 : 1;
-                _rb.velocity = new Vector2(_hoz * _curSpeed, _rb.velocity.y);
+                _hozDir = dir == Diretion.Left ? -1 : 1;
+                _rb.velocity = new Vector2(_hozDir * _curSpeed, _rb.velocity.y);
             }else if(dir == Diretion.Up || dir == Diretion.Down)
             {
-                _vert = dir == Diretion.Down ? -1 : 1;
-                _rb.velocity = new Vector2(_rb.velocity.x, _vert * _curSpeed);
+                _vertDir = dir == Diretion.Down ? -1 : 1;
+                _rb.velocity = new Vector2(_rb.velocity.x, _vertDir * _curSpeed);
             }
         }
         private void WaterCheck()
@@ -212,7 +212,26 @@ namespace PIS.PlatformGame
             if(inWaterCol)
                 inWaterCol.enabled = Col == PlayerCollider.InWater;
         }
-
+        public override void TakeDamage(int dmg, Actor whoHit = null)
+        {
+            if(IsDead) return;
+            base.TakeDamage(dmg, whoHit);
+            if(_curHp > 0 && !_isInvincible)
+            {
+                ChangeState(PlayerAnimState.GotHit);
+            }
+        }
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag(GameTag.Enemy.ToString()))
+            {
+                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    TakeDamage(enemy.stat.damage, enemy);
+                }
+            }
+        }
         // ----------------------------------------------------------------------------
 
         #region FSM
@@ -428,7 +447,18 @@ namespace PIS.PlatformGame
         private void LadderIdle_Exit() { }
         private void GotHit_Enter() { }
         private void GotHit_Update() {
-            //Helper.PlayAnim(_anim, PlayerAnimState.GotHit.ToString());
+            if (_isKnockBack)
+            {
+                KnockBackMove(0.25f);
+            }
+            else if (obstacle.IsOnWater)
+            {
+                ChangeState(_prevState);
+            }
+            else
+            {
+                ChangeState(PlayerAnimState.Idle);
+            }
         }
         private void GotHit_Exit() { }
 

@@ -61,6 +61,7 @@ namespace PIS.PlatformGame
         }
         public override void TakeDamage(int dmg, Actor whoHit = null)
         {
+            if(IsDead) return;
             base.TakeDamage(dmg, whoHit);
             if(_curHp > 0 && !_isInvincible)
             {
