@@ -105,7 +105,7 @@ namespace PIS.PlatformGame
         {
             if (_isKnockBack)
             {
-                //KnockBackMove(_targetDir.y);
+                KnockBackMove(_targetDir.y);
             }
             else
             {

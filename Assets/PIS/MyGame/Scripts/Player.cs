@@ -41,7 +41,7 @@ namespace PIS.PlatformGame
         }
         private bool IsAttacking
         {
-            get => _fsm.State == PlayerAnimState.Attack || _fsm.State == PlayerAnimState.Shoot;
+            get => _fsm.State == PlayerAnimState.Attack || _fsm.State == PlayerAnimState.Bullet;
         }
         protected override void Awake()
         {
@@ -161,7 +161,7 @@ namespace PIS.PlatformGame
                     ChangeState(PlayerAnimState.Attack);
             }else if (GamepadController.Ins.CanFire)
             {
-                ChangeState(PlayerAnimState.Shoot);
+                ChangeState(PlayerAnimState.Bullet);
             }
         }
         private void HozMoveCheck()
@@ -316,13 +316,13 @@ namespace PIS.PlatformGame
         private void Swim_Exit() {
             _waterFallTime = 1f;
         }
-        private void Shoot_Enter() {
+        private void Bullet_Enter() {
             ChangeStateDelay(PlayerAnimState.Idle);
         }
-        private void Shoot_Update() {
-            Helper.PlayAnim(_anim, PlayerAnimState.Shoot.ToString());
+        private void Bullet_Update() {
+            Helper.PlayAnim(_anim, PlayerAnimState.Bullet.ToString());
         }
-        private void Shoot_Exit() { }
+        private void Bullet_Exit() { }
         private void Attack_Enter() {
             _isAttacked = true;
             ChangeStateDelay(PlayerAnimState.Idle);

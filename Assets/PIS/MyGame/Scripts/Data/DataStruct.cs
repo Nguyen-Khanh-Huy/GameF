@@ -54,7 +54,7 @@ namespace PIS.PlatformGame
         OnAir,
         Land,
         Swim,
-        Shoot,
+        Bullet,
         Attack,
         Fly,
         FlyOnAir,

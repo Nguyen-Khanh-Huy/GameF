@@ -59,7 +59,7 @@ namespace PIS.PlatformGame
             GetTargetDir();
             if (_isKnockBack)
             {
-                //KnockBackMove();
+                KnockBackMove(0.55f);
             }
             else
             {
