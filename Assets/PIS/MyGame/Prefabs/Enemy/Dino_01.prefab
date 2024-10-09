@@ -117,6 +117,10 @@ GameObject:
   - component: {fileID: 8404781989640089921}
   - component: {fileID: 1672504090034832756}
   - component: {fileID: 5223106524053489421}
+  - component: {fileID: 7873358005664550662}
+  - component: {fileID: -3941995323386823094}
+  - component: {fileID: 749227130356080940}
+  - component: {fileID: 406239829276345320}
   m_Layer: 11
   m_Name: Dino_01
   m_TagString: Enemy
@@ -166,7 +170,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &5223106524053489421
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -202,3 +206,78 @@ CapsuleCollider2D:
   m_Offset: {x: 0.22072136, y: -0.04291272}
   m_Size: {x: 1.3437004, y: 2.1586394}
   m_Direction: 0
+--- !u!114 &7873358005664550662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576212513529952290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8d6752b57d4ad4eab0543a001ac7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp:
+  - {fileID: 5740958501932085084}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.4245283, b: 0.4245283, a: 0.627451}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-3941995323386823094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576212513529952290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560aab82296e14d4e9cfb497c367d96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 0
+  detect: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3
+--- !u!114 &749227130356080940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576212513529952290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9822d390c78fb4b4f8be58de366e329d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: 0
+  movingDist: 3
+  speed: 0
+  isOnlyUp: 0
+  isAuto: 0
+--- !u!114 &406239829276345320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576212513529952290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2dcba136620284ea04ccacd7e76faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 4c58e2588bf708f4bad6168c50b73381, type: 2}
+  normalLayer: 11
+  invincibleLayer: 9
+  deadLayer: 10
+  _anim: {fileID: 4653698615934903552}
+  flashVfx: {fileID: 7873358005664550662}
+  deadVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}
+  movingDist: 0

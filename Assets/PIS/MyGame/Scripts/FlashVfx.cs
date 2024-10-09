@@ -3,53 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace UDEV.PlatformGame
+namespace PIS.PlatformGame
 {
     public class FlashVfx : MonoBehaviour
     {
-        public SpriteRenderer[] spriteRenderers;
+        public SpriteRenderer[] sp;
         [Range(0f, 0.15f)]
         public float flashRate;
         public Color normalColor;
         public Color flashColor;
-
         public UnityEvent OnCompleted;
 
-        bool m_isFlashing;
-
-        float m_flashingTime;
-
-        Coroutine m_flash;
+        bool _isFlashing;
+        float _flashingTime;
+        Coroutine _flash;
 
         private void OnDisable()
         {
             SetSpritesAlpha(normalColor);
             StopFlash();
         }
-
         public void Flash(float time)
         {
             if (gameObject.activeInHierarchy)
-                m_flash = StartCoroutine(FlashCo(time));
+                _flash = StartCoroutine(FlashCo(time));
         }
-
         public void StopFlash()
         {
-            m_isFlashing = false;
+            _isFlashing = false;
 
-            if (m_flash != null)
-                StopCoroutine(m_flash);
+            if (_flash != null)
+                StopCoroutine(_flash);
         }
-
         IEnumerator FlashCo(float time)
         {
-            if (!m_isFlashing)
+            if (!_isFlashing)
             {
-                m_flashingTime = time;
+                _flashingTime = time;
 
-                m_isFlashing = true;
+                _isFlashing = true;
 
-                while (m_flashingTime > 0)
+                while (_flashingTime > 0)
                 {
                     SetSpritesAlpha(flashColor);
                     yield return new WaitForSeconds(flashRate);
@@ -60,35 +54,33 @@ namespace UDEV.PlatformGame
                     SetSpritesAlpha(normalColor);
                 }
 
-                m_isFlashing = false;
+                _isFlashing = false;
             }
             yield return null;
         }
-
         public void SetSpritesAlpha(Color color)
         {
-            if (spriteRenderers != null && spriteRenderers.Length > 0)
+            if (sp != null && sp.Length > 0)
             {
-                for (int i = 0; i < spriteRenderers.Length; i++)
+                for (int i = 0; i < sp.Length; i++)
                 {
-                    if (spriteRenderers[i] != null)
-                        spriteRenderers[i].color = color;
+                    if (sp[i] != null)
+                        sp[i].color = color;
                 }
             }
         }
-
         private void Update()
         {
-            if (m_flashingTime > 0 && m_isFlashing)
+            if (_flashingTime > 0 && _isFlashing)
             {
-                m_flashingTime -= Time.deltaTime;
+                _flashingTime -= Time.deltaTime;
 
-                if (m_flashingTime <= 0)
+                if (_flashingTime <= 0)
                 {
                     if (OnCompleted != null)
                         OnCompleted.Invoke();
 
-                    m_isFlashing = false;
+                    _isFlashing = false;
                 }
             }
         }

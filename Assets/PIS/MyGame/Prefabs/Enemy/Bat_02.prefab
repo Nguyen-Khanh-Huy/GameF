@@ -117,8 +117,11 @@ GameObject:
   - component: {fileID: 6055843932449892398}
   - component: {fileID: 4722384613914371709}
   - component: {fileID: -577994950587276387}
+  - component: {fileID: -1743418074055848516}
+  - component: {fileID: -6825212413580801099}
+  - component: {fileID: -3402801563744412268}
   m_Layer: 11
-  m_Name: Doi_02
+  m_Name: Bat_02
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,3 +205,62 @@ CapsuleCollider2D:
   m_Offset: {x: 0.32558417, y: -0.2621951}
   m_Size: {x: 1.2145569, y: 1.2145569}
   m_Direction: 0
+--- !u!114 &-1743418074055848516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577683087713437317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8d6752b57d4ad4eab0543a001ac7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp:
+  - {fileID: 8222919367276799399}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.4245283, b: 0.4245283, a: 0.627451}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6825212413580801099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577683087713437317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560aab82296e14d4e9cfb497c367d96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 0
+  detect: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3
+--- !u!114 &-3402801563744412268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577683087713437317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0a8ec212fb5ca43ae46d1d54cdf14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: cc9fd87f3a32e354c9524c8d8e2ce734, type: 2}
+  normalLayer: 11
+  invincibleLayer: 9
+  deadLayer: 10
+  _anim: {fileID: 5995318431239667972}
+  flashVfx: {fileID: -1743418074055848516}
+  deadVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}
+  movingDist: 3
+  canRotate: 1

@@ -23,6 +23,7 @@ namespace PIS.PlatformGame
         protected Rigidbody2D _rb;
 
         [Header("VFX:")]
+        public FlashVfx flashVfx;
         public GameObject deadVfxPb;
 
         protected Actor _whoHit;
@@ -71,12 +72,15 @@ namespace PIS.PlatformGame
                 KnockBack();
             }
         }
-
         protected void KnockBack()
         {
             if (_isInvincible || _isKnockBack || !gameObject.activeInHierarchy) return;
             _isKnockBack = true;
             StartCoroutine(StopKnockBack());
+            if (flashVfx)
+            {
+                flashVfx.Flash(stat.invincibleTime);
+            }
         }
         protected IEnumerator StopKnockBack()
         {

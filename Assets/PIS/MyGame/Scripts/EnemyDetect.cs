@@ -39,7 +39,7 @@ namespace PIS.PlatformGame
             }
             //if (_isDetected) { Debug.Log("Da va cham"); }
         }
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             if(detect == Detect.RayCast)
             {
@@ -51,7 +51,7 @@ namespace PIS.PlatformGame
                 Gizmos.color = Helper.ChangAlpha(Color.green, 0.2f);
                 Gizmos.DrawSphere(transform.position, detectDist);
             }
-        }
+        }*/
     }
 
 }
