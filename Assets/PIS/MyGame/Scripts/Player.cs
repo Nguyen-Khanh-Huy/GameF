@@ -231,6 +231,63 @@ namespace PIS.PlatformGame
                     TakeDamage(enemy.stat.damage, enemy);
                 }
             }
+            if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+            {
+                _rb.isKinematic = true;
+                transform.SetParent(col.gameObject.transform);
+            }
+        }        
+        private void OnCollisionStay2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+            {
+                if(obstacle.IsOnGround && _fsm.State == PlayerAnimState.Idle)
+                {
+                    _rb.isKinematic = true;
+                    transform.SetParent(col.gameObject.transform);
+                }
+            }
+        }
+        private void OnCollisionExit2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+            {
+                if(!obstacle.IsOnGround)
+                {
+                    _rb.isKinematic = false;
+                    transform.SetParent(null);
+                }
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag(GameTag.Thorn.ToString()))
+            {
+                TakeDamage(1);
+            }
+            if (col.CompareTag(GameTag.CheckPoint.ToString()))
+            {
+                // save vi tri
+            }
+            if (col.CompareTag(GameTag.Collectable.ToString()))
+            {
+                Collectable collectable = col.GetComponent<Collectable>();
+                if (collectable)
+                {
+                    collectable.Trigger();
+                }
+            }
+            if (col.CompareTag(GameTag.Door.ToString()))
+            {
+                // xu ly mo cua
+            }
+        }
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.CompareTag(GameTag.DeadZone.ToString()))
+            {
+                Dead();
+            }
         }
         // ----------------------------------------------------------------------------
 

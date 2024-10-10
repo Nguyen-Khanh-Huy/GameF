@@ -37,7 +37,7 @@ namespace PIS.PlatformGame
         }
         private void FixedUpdate()
         {
-            if (isAuto) return;
+            if (!isAuto) return;
             Move();
             SwitchCheck();
         }
@@ -77,7 +77,7 @@ namespace PIS.PlatformGame
             }
         }
         public void SwitchCheck()
-        {
+        {// neu da den' dich' -> thay doi huong va xac dinh dich' den'
             if (IsReached())
             {
                 SwitchDir(_backDir);

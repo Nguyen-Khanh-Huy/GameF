@@ -84,7 +84,7 @@ namespace PIS.PlatformGame
         InWater,
         None
     }
-    public enum Collectable
+    public enum CollectableType
     {
         Heart,
         Life,
