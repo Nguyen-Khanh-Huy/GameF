@@ -12,6 +12,10 @@ namespace PIS.PlatformGame
         [SerializeField]
         private Player _player;
 
+        public void AttackCamera()
+        {
+            CamShake.ins.ShakeTrigger(0.3f, 0.1f, 1);
+        }
         public void Attack()
         {
             if(_player == null) return;

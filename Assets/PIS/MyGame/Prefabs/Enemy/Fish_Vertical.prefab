@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 7065664798518374510}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3821f14887c78d74fbb293df73d11713, type: 2}
+  m_Controller: {fileID: 9100000, guid: 428cdfc5bd34bb3448fa46299f0323d8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &-1689795649079012113
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   moveDir: 2
   movingDist: 1.7
   speed: 0
-  isOnlyUp: 1
+  isOnlyUp: 0
   isAuto: 0
 --- !u!114 &-7168763419739450976
 MonoBehaviour:

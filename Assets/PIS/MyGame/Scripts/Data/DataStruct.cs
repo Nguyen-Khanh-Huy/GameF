@@ -43,8 +43,8 @@ namespace PIS.PlatformGame
     }
     public enum SpriteOder
     {
-        Nomal =5,
-        InWater =2
+        Nomal = 5,
+        InWater = 1
     }
     public enum PlayerAnimState
     {

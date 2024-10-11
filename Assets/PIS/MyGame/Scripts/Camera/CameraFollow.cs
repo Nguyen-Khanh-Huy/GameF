@@ -21,10 +21,10 @@ namespace PIS.PlatformGame
         private float topLimit;
         [Range(1, 10)]
         public float smoothFactor;
-        private bool m_isHozStuck;
-        private float m_stuckTime;
+        private bool _isHozStuck;
+        private float _stuckTime;
 
-        public bool IsHozStuck { get => m_isHozStuck; }
+        public bool IsHozStuck { get => _isHozStuck; }
 
         private void Awake()
         {
@@ -45,27 +45,25 @@ namespace PIS.PlatformGame
 
             if (Vector2.Distance(new Vector2(targetPos.x, 0f), new Vector2(smoothedPos.x, 0f)) <= 0.01f
                 || transform.position.x >= rightLimit
-                || transform.position.x <= leftLimit
-                )
+                || transform.position.x <= leftLimit)
+                
             {
-                m_stuckTime += Time.deltaTime;
-                if (m_stuckTime >= 0.5f)
+                _stuckTime += Time.deltaTime;
+                if (_stuckTime >= 0.5f)
                 {
-                    m_isHozStuck = true;
+                    _isHozStuck = true;
                 }
             }
             else
             {
-                m_isHozStuck = false;
+                _isHozStuck = false;
             }
 
             transform.position = smoothedPos;
-            transform.position = new Vector3
-                (
+            transform.position = new Vector3(
                 Mathf.Clamp(transform.position.x, leftLimit, rightLimit),
                 Mathf.Clamp(transform.position.y, bottomLimit, topLimit),
-                transform.position.z
-                );
+                transform.position.z);
         }
 
         private void OnDrawGizmos()

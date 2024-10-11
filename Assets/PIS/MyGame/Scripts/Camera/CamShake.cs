@@ -7,61 +7,54 @@ namespace PIS.PlatformGame
     public class CamShake : MonoBehaviour
     {
         public static CamShake ins;
-
-        // Transform of the camera to shake. Grabs the gameObject's transform
-        // if null.
         public Transform camTransform;
 
-        // How long the object should shake for.
-        public float shakeDuration = 0f;
+        public float shakeTime; // time shake
+        public float shakeRadius; // ban kinh shake
+        public float shakeForce; // luc shake
 
-        // Amplitude of the shake. A larger value shakes the camera harder.
-        public float shakeAmount = 0.7f;
-        public float decreaseFactor = 1.0f;
-        bool m_canShake;
-
-        Vector3 originalPos;
+        private bool _canShake;
+        private Vector3 _originalPos;
 
         public void Awake()
         {
             ins = this;
         }
 
-        void OnEnable()
+        private void OnEnable()
         {
-            originalPos = camTransform.localPosition;
+            _originalPos = camTransform.localPosition;
         }
 
-        void Update()
+        private void Update()
         {
-            if (!m_canShake) return;
-
-            if (shakeDuration > 0)
+            if (!_canShake) return;
+            if (shakeTime > 0)
             {
-                camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+                camTransform.localPosition = _originalPos + Random.insideUnitSphere * shakeRadius;
 
-                shakeDuration -= Time.deltaTime * decreaseFactor;
+                shakeTime -= Time.deltaTime * shakeForce;
             }
             else
             {
-                shakeDuration = 0f;
-                camTransform.localPosition = originalPos;
-                m_canShake = false;
+                shakeTime = 0f;
+                camTransform.localPosition = _originalPos;
+                _canShake = false;
             }
         }
 
-        public void ShakeTrigger(float _dur, float _amount, float _decreaseFactor = 1.0f)
+        public void ShakeTrigger(float _shakeTime, float _shakeRadius, float _shakeForce = 1.0f)
         {
-            m_canShake = true;
-            shakeDuration = _dur;
-            shakeAmount = _amount;
-            decreaseFactor = _decreaseFactor;
+            _canShake = true;
+            shakeTime = _shakeTime;
+            shakeRadius = _shakeRadius;
+            shakeForce = _shakeForce;
         }
 
         public void ShakeTrigger(bool isTrigger = true)
         {
-            m_canShake = isTrigger;
-            camTransform.localPosition = originalPos;
+            _canShake = isTrigger;
+            camTransform.localPosition = _originalPos;
         }
     }
 

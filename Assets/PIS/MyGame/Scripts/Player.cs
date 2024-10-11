@@ -52,6 +52,17 @@ namespace PIS.PlatformGame
         }
         private void Update()
         {
+            if (sp)
+            {
+                if (obstacle.IsOnWater)
+                {
+                    sp.sortingOrder = (int)SpriteOder.InWater;
+                }
+                else
+                {
+                    sp.sortingOrder = (int)SpriteOder.Nomal;
+                }
+            }
             ActionHandle();
         }
         private void FixedUpdate()
@@ -205,11 +216,11 @@ namespace PIS.PlatformGame
         }
         private void ActiveCol(PlayerCollider Col)
         {
-            if(defaulCol)
+            if (defaulCol)
                 defaulCol.enabled = Col == PlayerCollider.Default;
             if (flyingCol)
                 flyingCol.enabled = Col == PlayerCollider.Flying;
-            if(inWaterCol)
+            if (inWaterCol)
                 inWaterCol.enabled = Col == PlayerCollider.InWater;
         }
         public override void TakeDamage(int dmg, Actor whoHit = null)
@@ -322,6 +333,10 @@ namespace PIS.PlatformGame
             if(_rb.velocity.y < -2 && !obstacle.IsOnGround)
             {
                 ChangeState(PlayerAnimState.OnAir);
+            }
+            if (obstacle.IsOnGround)
+            {
+                ChangeState(PlayerAnimState.Idle);
             }
             HozMoveCheck();
             Helper.PlayAnim(_anim, PlayerAnimState.Jump.ToString());
@@ -466,7 +481,9 @@ namespace PIS.PlatformGame
             Helper.PlayAnim(_anim, PlayerAnimState.Ladder.ToString());
         }
         private void Ladder_Exit() { }
-        private void Dead_Enter() { }
+        private void Dead_Enter() {
+            CamShake.ins.ShakeTrigger(0.5f, 0.2f, 1);
+        }
         private void Dead_Update() {
             Helper.PlayAnim(_anim, PlayerAnimState.Dead.ToString());
         }
