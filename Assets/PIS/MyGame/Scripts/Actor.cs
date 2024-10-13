@@ -30,8 +30,8 @@ namespace PIS.PlatformGame
 
         protected int _curHp;
         protected bool _isKnockBack;
-        protected bool _isInvincible; // phan cong
-        protected float _startingGravity; // trong luc trai dat
+        protected bool _isInvincible;
+        protected float _startingGravity; // luu lai trong luc trai dat
         protected bool _isFaceLeft;
         protected float _curSpeed;
         protected int _hozDir, _vertDir;

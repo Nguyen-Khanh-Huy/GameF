@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MonsterLove.StateMachine;
+using UnityEngine.Tilemaps;
 
 namespace PIS.PlatformGame
 {
@@ -63,6 +64,10 @@ namespace PIS.PlatformGame
                     sp.sortingOrder = (int)SpriteOder.Nomal;
                 }
             }
+            if (IsDead)
+            {
+                GameManager.Ins.SetMapSpeed(0f);
+            }
             ActionHandle();
         }
         private void FixedUpdate()
@@ -74,6 +79,7 @@ namespace PIS.PlatformGame
             if (IsAttacking || _isKnockBack) return;
             if (GamepadController.Ins.IsStatic)
             {
+                GameManager.Ins.SetMapSpeed(0f);
                 _rb.velocity = new Vector2(0f, _rb.velocity.y);
             }
             if (obstacle.IsOnLadder && _fsm.State != PlayerAnimState.LadderIdle && _fsm.State != PlayerAnimState.Ladder)
@@ -109,7 +115,16 @@ namespace PIS.PlatformGame
                 Flip(dir);
                 _hozDir = dir == Diretion.Left ? -1 : 1;
                 _rb.velocity = new Vector2(_hozDir * _curSpeed, _rb.velocity.y);
-            }else if(dir == Diretion.Up || dir == Diretion.Down)
+                if (CameraFollow.ins.IsHozStuck)
+                {
+                    GameManager.Ins.SetMapSpeed(0f);
+                }
+                else
+                {
+                    GameManager.Ins.SetMapSpeed(-_hozDir * _curSpeed);
+                }
+            }
+            else if(dir == Diretion.Up || dir == Diretion.Down)
             {
                 _vertDir = dir == Diretion.Down ? -1 : 1;
                 _rb.velocity = new Vector2(_rb.velocity.x, _vertDir * _curSpeed);
@@ -334,7 +349,7 @@ namespace PIS.PlatformGame
             {
                 ChangeState(PlayerAnimState.OnAir);
             }
-            if (obstacle.IsOnGround)
+            if (_rb.velocity.y < 1 && obstacle.IsOnGround)
             {
                 ChangeState(PlayerAnimState.Idle);
             }
@@ -379,6 +394,10 @@ namespace PIS.PlatformGame
             ActiveCol(PlayerCollider.InWater);
         }
         private void Swim_Update() {
+            if (!obstacle.IsOnWater) 
+            {
+                ChangeState(PlayerAnimState.OnAir);
+            }
             JumpCheck();
             WaterCheck();
             HozMoveCheck();
@@ -496,6 +515,14 @@ namespace PIS.PlatformGame
             if (GamepadController.Ins.CanMoveLeft || GamepadController.Ins.CanMoveRight)
             {
                 ChangeState(PlayerAnimState.Walk);
+            }
+            if (obstacle.IsOnWater)
+            {
+                ChangeState(PlayerAnimState.Swim);
+            }
+            if (obstacle.IsOnDeepWater)
+            {
+                ChangeState(PlayerAnimState.SwimOnDeep);
             }
             Helper.PlayAnim(_anim, PlayerAnimState.Idle.ToString());
         }

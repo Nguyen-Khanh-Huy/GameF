@@ -8,9 +8,17 @@ namespace PIS.PlatformGame
     {
         public GameplaySetting setting;
         public Player player;
+        public FreeParallax map;
         public override void Awake()
         {
             MakeSingleton(false); //destroy doi tuong nay khi load sang since khac
+        }
+        public void SetMapSpeed(float speed)
+        {
+            if (map)
+            {
+                map.Speed = speed;
+            }
         }
     }
 }
