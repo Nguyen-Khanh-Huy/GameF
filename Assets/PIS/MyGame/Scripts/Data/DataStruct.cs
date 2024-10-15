@@ -39,7 +39,7 @@ namespace PIS.PlatformGame
     {
         MainMenu,
         GamePlay,
-        Level
+        Level_
     }
     public enum SpriteOder
     {
