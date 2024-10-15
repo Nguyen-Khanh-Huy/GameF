@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 798899748140711991}
   - component: {fileID: 6818880794298816721}
   m_Layer: 5
-  m_Name: TxtCoin
+  m_Name: TxtPrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
