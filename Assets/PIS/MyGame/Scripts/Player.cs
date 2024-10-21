@@ -336,6 +336,10 @@ namespace PIS.PlatformGame
             if (!obstacle.IsOnGround) {
                 ChangeState(PlayerAnimState.OnAir);
             }
+            if(obstacle.IsOnGround && GamepadController.Ins.CanFly)
+            {
+                _rb.velocity = Vector2.zero;
+            }
             HozMoveCheck();
             Helper.PlayAnim(_anim, PlayerAnimState.Walk.ToString());
         }

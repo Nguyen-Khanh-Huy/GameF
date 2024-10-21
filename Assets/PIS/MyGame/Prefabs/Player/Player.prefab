@@ -429,7 +429,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
-  attackRadius: 0.7
+  attackRadius: 0.9
   offset: {x: 1, y: -0.5, z: 0}
   _player: {fileID: 8025144911386448037}
 --- !u!114 &7103269776439440883

@@ -31,7 +31,7 @@ namespace PIS.PlatformGame
                 {
                     enemy.TakeDamage(GameManager.Ins.player.stat.damage, GameManager.Ins.player);
                 }
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
             _previewPos = transform.position;
         }
