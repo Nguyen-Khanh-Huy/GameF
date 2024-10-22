@@ -19,7 +19,15 @@ namespace PIS.PlatformGame
         public List<bool> levelPasseds;
         public List<float> playTimes;
         public List<float> completeTimes;
-
+        //public override void Awake()
+        //{
+        //    base.Awake();
+        //    checkPoints = new List<Vector3>();
+        //    levelUnlockeds = new List<bool>();
+        //    levelPasseds = new List<bool>();
+        //    playTimes = new List<float>(); 
+        //    completeTimes = new List<float>();
+        //}
         public void SaveData()
         {
             Pref.GameData = JsonUtility.ToJson(this);
@@ -42,13 +50,13 @@ namespace PIS.PlatformGame
         {
             if(dataList == null || idx < 0) return;
 
-            if(dataList.Count <= 0 || (dataList.Count > 0 && idx > dataList.Count))
+            if(dataList.Count <= 0 || (dataList.Count > 0 && idx >= dataList.Count))
             {
-                dataList.Add(value); // them value vào dataList
+                dataList.Add(value);
             }
             else
             {
-                dataList[idx] = value; // cap nhat lại value cua dataList voi chi so idx
+                dataList[idx] = value; // update
             }
         }
         //-----------------------------------------------------------------------------
