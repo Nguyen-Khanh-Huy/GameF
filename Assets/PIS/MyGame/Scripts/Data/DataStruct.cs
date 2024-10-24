@@ -99,6 +99,7 @@ namespace PIS.PlatformGame
     {
         public int price;
         public Sprite preview;
+        public Goal goal;
     }
 
     [System.Serializable]
@@ -107,5 +108,20 @@ namespace PIS.PlatformGame
         public CollectableType itemType;
         public int price;
         public Sprite preview;
+    }
+
+    [System.Serializable]
+    public class Goal
+    {
+        public int timeOneStar;
+        public int timeTwoStar;
+        public int timeThreeStar;
+
+        public int GetStar(int time)
+        {
+            if (time <= timeThreeStar) return 3;
+            else if(time <= timeTwoStar) return 2;
+            else return 1;
+        }
     }
 }

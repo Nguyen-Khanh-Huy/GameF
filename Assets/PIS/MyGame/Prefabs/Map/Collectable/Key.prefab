@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359419926209152486}
-  - component: {fileID: -5037743952351145098}
   - component: {fileID: 3632051322993414887}
+  - component: {fileID: 6111826008226513554}
   m_Layer: 0
   m_Name: Key
   m_TagString: Collectable
@@ -34,33 +34,6 @@ Transform:
   - {fileID: 714819661694546847}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &-5037743952351145098
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528395340534475522}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &3632051322993414887
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -96,6 +69,23 @@ CircleCollider2D:
   m_Offset: {x: -0.038214505, y: 0.015922785}
   serializedVersion: 2
   m_Radius: 0.4458624
+--- !u!114 &6111826008226513554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528395340534475522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f2f55075c21cf48b29913c839267a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableType: 3
+  minBonus: 1
+  maxBonus: 1
+  collisionSfx: {fileID: 0}
+  destroyVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}
 --- !u!1 &7852389190370124731
 GameObject:
   m_ObjectHideFlags: 0

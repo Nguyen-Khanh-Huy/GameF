@@ -6,16 +6,12 @@ namespace PIS.PlatformGame
 {
     public class CollectableKey : Collectable
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void TriggerHandle()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            GameManager.Ins.CurKey += _bonus;
+            GameData.Ins.key = GameManager.Ins.CurKey;
+            GameData.Ins.SaveData();
+            //update UI
         }
     }
 

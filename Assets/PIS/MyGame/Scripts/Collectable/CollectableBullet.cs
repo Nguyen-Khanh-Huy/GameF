@@ -6,16 +6,13 @@ namespace PIS.PlatformGame
 {
     public class CollectableBullet : Collectable
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void TriggerHandle()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            base.TriggerHandle();
+            GameManager.Ins.CurBullet += _bonus;
+            GameData.Ins.bullet = GameManager.Ins.CurBullet;
+            GameData.Ins.SaveData();
+            //update UI
         }
     }
 

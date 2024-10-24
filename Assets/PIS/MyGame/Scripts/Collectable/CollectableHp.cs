@@ -6,16 +6,12 @@ namespace PIS.PlatformGame
 {
     public class CollectableHp : Collectable
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void TriggerHandle()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            _player.CurHp += _bonus;
+            GameData.Ins.hp = _player.CurHp;
+            GameData.Ins.SaveData();
+            //update UI
         }
     }
 

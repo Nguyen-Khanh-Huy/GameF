@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2793062976989290373}
-  - component: {fileID: -5142846993745642096}
   - component: {fileID: -584790034268542585}
+  - component: {fileID: 3755131787576197892}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Collectable
@@ -34,33 +34,6 @@ Transform:
   - {fileID: 2659178659888950792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &-5142846993745642096
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2949524130566141369}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &-584790034268542585
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -96,6 +69,23 @@ CircleCollider2D:
   m_Offset: {x: 0.037933707, y: -0.08988607}
   serializedVersion: 2
   m_Radius: 0.42495745
+--- !u!114 &3755131787576197892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949524130566141369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a861474deb953ac4583c8eaa88f67467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableType: 4
+  minBonus: 1
+  maxBonus: 3
+  collisionSfx: {fileID: 0}
+  destroyVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}
 --- !u!1 &7785029524622356638
 GameObject:
   m_ObjectHideFlags: 0

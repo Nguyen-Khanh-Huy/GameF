@@ -23,7 +23,14 @@ namespace PIS.PlatformGame
         }
         public virtual void Init()
         {
-
+            DestroyWhenLevelPassed();
+        }
+        protected void DestroyWhenLevelPassed()
+        {
+            if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurLevelId))
+            {
+                Destroy(gameObject);
+            }
         }
         protected virtual void TriggerHandle()
         {

@@ -242,6 +242,8 @@ namespace PIS.PlatformGame
         {
             if(IsDead) return;
             base.TakeDamage(dmg, whoHit);
+            GameData.Ins.hp = _curHp;
+            GameData.Ins.SaveData();
             if(_curHp > 0 && !_isInvincible)
             {
                 ChangeState(PlayerAnimState.GotHit);

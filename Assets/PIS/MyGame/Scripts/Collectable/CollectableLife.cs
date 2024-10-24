@@ -6,16 +6,12 @@ namespace PIS.PlatformGame
 {
     public class CollectableLife : Collectable
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void TriggerHandle()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            GameManager.Ins.CurLive += _bonus;
+            GameData.Ins.life = GameManager.Ins.CurLive;
+            GameData.Ins.SaveData();
+            // update UI
         }
     }
 

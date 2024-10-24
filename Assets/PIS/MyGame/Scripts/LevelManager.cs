@@ -10,7 +10,7 @@ namespace PIS.PlatformGame
         private int _curLevelId;
 
         public int CurLevelId { get => _curLevelId; set => _curLevelId = value; }
-        public LevelItem CurLevl
+        public LevelItem CurLevel
         {
             get => levels[_curLevelId];
         }
