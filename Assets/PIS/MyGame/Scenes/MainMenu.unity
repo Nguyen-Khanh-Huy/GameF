@@ -755,6 +755,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146611849}
   m_CullTransparentMesh: 1
+--- !u!1 &208118144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208118145}
+  - component: {fileID: 208118146}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &208118145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208118144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208118146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208118144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3bdb64f8be74c41b4ea4f836379d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &237985132
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239905322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1827075957}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.ShopDialog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &239905322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,7 +1436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 365159107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034784059}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.LevelSelectDialog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &365159107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,7 +3180,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 835469474}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034784059}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.Dialog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &835469474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3571,7 +3651,7 @@ GameObject:
   - component: {fileID: 953273843}
   - component: {fileID: 953273842}
   m_Layer: 5
-  m_Name: TxtCount
+  m_Name: TxtCoinCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4031,16 +4111,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - itemType: 0
-    prive: 0
+    price: 80
     preview: {fileID: 21300000, guid: d2c240fa00ec44840accb8289741ab87, type: 3}
   - itemType: 1
-    prive: 0
+    price: 300
     preview: {fileID: -1258711596, guid: d9c176818c008ce40909f024de8e52b1, type: 3}
   - itemType: 2
-    prive: 0
+    price: 15
     preview: {fileID: 21300000, guid: e1de582d45a83254aa3b07203884adae, type: 3}
   - itemType: 3
-    prive: 0
+    price: 450
     preview: {fileID: 21300000, guid: f006dcc52226bdc42b08c5bbb0ea1c2b, type: 3}
 --- !u!4 &1201296017
 Transform:
@@ -5547,7 +5627,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1665270933}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1827075957}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.Dialog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1665270933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,6 +5858,7 @@ GameObject:
   - component: {fileID: 1827075954}
   - component: {fileID: 1827075956}
   - component: {fileID: 1827075955}
+  - component: {fileID: 1827075957}
   m_Layer: 5
   m_Name: ShopDialog
   m_TagString: Untagged
@@ -5831,6 +5924,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827075953}
   m_CullTransparentMesh: 1
+--- !u!114 &1827075957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827075953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccafd7d920f00a4cbfef26ee91e6dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
+  gridRoot: {fileID: 1432865489}
+  shopItemUIPb: {fileID: 7909055765577364675, guid: b506d86813911914780d9a72a3742295, type: 3}
+  txtCoinCount: {fileID: 953273843}
 --- !u!1 &1841620268
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,8 +6393,9 @@ GameObject:
   - component: {fileID: 2034784056}
   - component: {fileID: 2034784058}
   - component: {fileID: 2034784057}
+  - component: {fileID: 2034784059}
   m_Layer: 5
-  m_Name: LevelSelectDialog
+  m_Name: LevelDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6348,6 +6459,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034784055}
   m_CullTransparentMesh: 1
+--- !u!114 &2034784059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034784055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de64c68aba7e9e4fba29618a6b1c8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
+  gridRoot: {fileID: 1305745005}
+  levelItemUIPb: {fileID: -3780233713285434617, guid: 7a20866214c658b4d916411643eafc0e, type: 3}
+  TxtcoinCount: {fileID: 1592972824}
 --- !u!1001 &2063727059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6892,6 +7020,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6272389876235414273, guid: 7a20866214c658b4d916411643eafc0e, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494161207194325731, guid: 7a20866214c658b4d916411643eafc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808660704432543757, guid: 7a20866214c658b4d916411643eafc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8692808779615211541, guid: 7a20866214c658b4d916411643eafc0e, type: 3}
       propertyPath: m_Name
       value: LevelItem
@@ -6909,6 +7049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1432865489}
     m_Modifications:
+    - target: {fileID: 5456348200619260067, guid: b506d86813911914780d9a72a3742295, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5732034304155901380, guid: b506d86813911914780d9a72a3742295, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7106,3 +7250,4 @@ SceneRoots:
   - {fileID: 1031160955}
   - {fileID: 272764038}
   - {fileID: 1201296017}
+  - {fileID: 208118145}

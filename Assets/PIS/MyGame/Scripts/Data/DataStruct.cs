@@ -93,17 +93,19 @@ namespace PIS.PlatformGame
         Coin,
         None
     }
+
     [System.Serializable]
     public class LevelItem
     {
         public int price;
         public Sprite preview;
     }
+
     [System.Serializable]
     public class ShopItem
     {
         public CollectableType itemType;
-        public int prive;
+        public int price;
         public Sprite preview;
     }
 }

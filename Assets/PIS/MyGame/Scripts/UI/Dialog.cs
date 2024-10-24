@@ -24,11 +24,6 @@ namespace PIS.PlatformGame
                 contentText.text = content;
         }
 
-        public virtual void UpdateDialog()
-        {
-
-        }
-
         public virtual void Close()
         {
             gameObject.SetActive(false);
