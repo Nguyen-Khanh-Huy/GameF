@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8508692352381157950}
   - component: {fileID: 1893753995474053715}
   - component: {fileID: 4954056428612843542}
+  - component: {fileID: 7854799541568640127}
   m_Layer: 0
   m_Name: DoorLock
   m_TagString: Door
@@ -120,3 +121,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.004502365, y: -0.39641654}
   m_Size: {x: 2.9225485, y: 5.499201}
   m_Direction: 0
+--- !u!114 &7854799541568640127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140422947605653028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ebe6f6a79ca5440b2625d0b14b830d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyRequired: 1
+  openSp: {fileID: 1540227251, guid: b59c49bbde8f90f41b3b5311ff1a85e8, type: 3}
+  closeSp: {fileID: 626374040, guid: b59c49bbde8f90f41b3b5311ff1a85e8, type: 3}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gameplay Setting
   m_EditorClassIdentifier: 
   IsOnMoble: 0
-  startingLife: 0
-  startingBullet: 0
+  startingLife: 1
+  startingBullet: 3

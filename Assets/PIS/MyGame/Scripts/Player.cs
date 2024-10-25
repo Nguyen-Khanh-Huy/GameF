@@ -248,6 +248,7 @@ namespace PIS.PlatformGame
             {
                 ChangeState(PlayerAnimState.GotHit);
             }
+            GUIManager.Ins.UpdateHp(_curHp);
         }
         private void OnCollisionEnter2D(Collision2D col)
         {
@@ -295,7 +296,7 @@ namespace PIS.PlatformGame
             }
             if (col.CompareTag(GameTag.CheckPoint.ToString()))
             {
-                // save vi tri
+                GameManager.Ins.SaveCheckPoint();
             }
             if (col.CompareTag(GameTag.Collectable.ToString()))
             {
@@ -307,7 +308,15 @@ namespace PIS.PlatformGame
             }
             if (col.CompareTag(GameTag.Door.ToString()))
             {
-                // xu ly mo cua
+                Door door = col.GetComponent<Door>();
+                if(door != null)
+                {
+                    door.OpenDoor();
+                    if (door.IsOpened)
+                    {
+                        ChangeState(PlayerAnimState.SayHello);
+                    }
+                }
             }
         }
         private void OnTriggerExit2D(Collider2D col)
@@ -510,6 +519,7 @@ namespace PIS.PlatformGame
             CamShake.ins.ShakeTrigger(0.5f, 0.2f, 1);
         }
         private void Dead_Update() {
+            GUIManager.Ins.UpdateHp(_curHp);
             Helper.PlayAnim(_anim, PlayerAnimState.Dead.ToString());
         }
         private void Dead_Exit() { }
@@ -566,6 +576,7 @@ namespace PIS.PlatformGame
             {
                 ChangeState(PlayerAnimState.Idle);
             }
+            GUIManager.Ins.UpdateHp(_curHp);
         }
         private void GotHit_Exit() { }
 

@@ -11,7 +11,7 @@ namespace PIS.PlatformGame
             GameManager.Ins.CurKey += _bonus;
             GameData.Ins.key = GameManager.Ins.CurKey;
             GameData.Ins.SaveData();
-            //update UI
+            GUIManager.Ins.UpdateKey(GameData.Ins.key);
         }
     }
 

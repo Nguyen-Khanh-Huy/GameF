@@ -26,7 +26,7 @@ namespace PIS.PlatformGame
         public int CurCoin { get => _curCoin; set => _curCoin = value; }
         public int CurBullet { get => _curBullet; set => _curBullet = value; }
         public int CurKey { get => _curKey; set => _curKey = value; }
-        public float TimeCount { get => _gameplayTime; }
+        public float TimePlay { get => _gameplayTime; }
         public int GoalStar { get => _goalStar; }
 
         public override void Awake()
@@ -39,6 +39,14 @@ namespace PIS.PlatformGame
         {
             LoadData();
             StartCoroutine(CamFollowDelay());
+            if(setting.IsOnMoble)
+            {
+                GUIManager.Ins.ShowMobileGamepad(true);
+            }
+            else
+            {
+                GUIManager.Ins.ShowMobileGamepad(false);
+            }
         }
         private void LoadData()
         {
@@ -70,6 +78,12 @@ namespace PIS.PlatformGame
             {
                 _gameplayTime = gameplayTime;
             }
+            GUIManager.Ins.UpdateLive(_curLive);
+            GUIManager.Ins.UpdateHp(player.CurHp);
+            GUIManager.Ins.UpdateCoin(_curCoin);
+            GUIManager.Ins.UpdateTime(Helper.TimeConvert(_gameplayTime));
+            GUIManager.Ins.UpdateBullet(_curBullet);
+            GUIManager.Ins.UpdateKey(_curKey);
         }
         public void BackToCheckPoint()
         {
@@ -87,6 +101,7 @@ namespace PIS.PlatformGame
             _curCoin += coins;
             GameData.Ins.coin += coins;
             GameData.Ins.SaveData();
+            GUIManager.Ins.UpdateCoin(GameData.Ins.coin);
         }
         public void Relplay()
         {
@@ -118,6 +133,10 @@ namespace PIS.PlatformGame
             _fsm.ChangeState(GameState.GameOver);
             GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurLevelId, Mathf.RoundToInt(_gameplayTime));
             GameData.Ins.SaveData();
+            if (GUIManager.Ins.levelFailDialog != null)
+            {
+                GUIManager.Ins.levelFailDialog.Show(true);
+            }
         }
         public void LevelClear()
         {
@@ -125,6 +144,10 @@ namespace PIS.PlatformGame
             GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurLevelId, Mathf.RoundToInt(_gameplayTime));
             _goalStar = LevelManager.Ins.CurLevel.goal.GetStar(Mathf.RoundToInt(_gameplayTime));
             GameData.Ins.SaveData();
+            if(GUIManager.Ins.levelClearDialog != null)
+            {
+                GUIManager.Ins.levelClearDialog.Show(true);
+            }
         }
         private IEnumerator CamFollowDelay()
         {
@@ -146,6 +169,7 @@ namespace PIS.PlatformGame
         protected void Playing_Update() {
             if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurLevelId)) return;
             _gameplayTime += Time.deltaTime;
+            GUIManager.Ins.UpdateTime(Helper.TimeConvert(_gameplayTime));
         }
         protected void Playing_Exit() { }
         protected void Win_Enter() { }

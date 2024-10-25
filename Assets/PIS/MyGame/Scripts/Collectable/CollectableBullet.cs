@@ -12,7 +12,7 @@ namespace PIS.PlatformGame
             GameManager.Ins.CurBullet += _bonus;
             GameData.Ins.bullet = GameManager.Ins.CurBullet;
             GameData.Ins.SaveData();
-            //update UI
+            GUIManager.Ins.UpdateBullet(GameData.Ins.bullet);
         }
     }
 

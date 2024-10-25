@@ -11,7 +11,7 @@ namespace PIS.PlatformGame
             _player.CurHp += _bonus;
             GameData.Ins.hp = _player.CurHp;
             GameData.Ins.SaveData();
-            //update UI
+            GUIManager.Ins.UpdateHp(GameData.Ins.hp);
         }
     }
 

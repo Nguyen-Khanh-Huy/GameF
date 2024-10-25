@@ -11,7 +11,7 @@ namespace PIS.PlatformGame
             GameManager.Ins.CurLive += _bonus;
             GameData.Ins.life = GameManager.Ins.CurLive;
             GameData.Ins.SaveData();
-            // update UI
+            GUIManager.Ins.UpdateLive(GameData.Ins.life);
         }
     }
 
