@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c316e94344cee439acff324e1a837e, type: 3}
   m_Name: Gameplay Setting
   m_EditorClassIdentifier: 
-  IsOnMoble: 0
+  IsOnMoble: 1
   startingLife: 1
   startingBullet: 3

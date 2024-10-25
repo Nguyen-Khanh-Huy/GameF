@@ -13,11 +13,11 @@ namespace PIS.PlatformGame
         private float _curSpeed;
         public void Fire()
         {
-            if (!bulletPb || !player || !firePoint) return;
+            if (!bulletPb || !player || !firePoint || GameManager.Ins.CurBullet <= 0) return;
             _curSpeed = player.IsFaceLeft ? -bulletPb.speed : bulletPb.speed;
             var bulletClone = Instantiate(bulletPb, firePoint.position, Quaternion.identity);
             bulletClone.speed = _curSpeed;
-            // giam SL dan xuong 1
+            GameManager.Ins.ReduceBullet();
         }
     }
 

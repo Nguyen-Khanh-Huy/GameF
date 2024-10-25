@@ -103,6 +103,13 @@ namespace PIS.PlatformGame
             GameData.Ins.SaveData();
             GUIManager.Ins.UpdateCoin(GameData.Ins.coin);
         }
+        public void ReduceBullet()
+        {
+            _curBullet--;
+            GameData.Ins.bullet = _curBullet;
+            GameData.Ins.SaveData();
+            GUIManager.Ins.UpdateBullet(_curBullet);
+        }
         public void Relplay()
         {
             SceneController.Ins.LoadLevelScene(LevelManager.Ins.CurLevelId);

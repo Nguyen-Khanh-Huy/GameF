@@ -6,6 +6,7 @@ namespace PIS.PlatformGame
 {
     public class GamepadController : Singleton<GamepadController>
     {
+        public Joystick joystick;
         public float jumpHoldingTime; // time gioi han giu nut nhay
         private bool _canMoveLeft;
         private bool _canMoveRight;
@@ -73,7 +74,11 @@ namespace PIS.PlatformGame
             }
             else
             {
-                // Xu ly moble
+                if(joystick == null) return;
+                _canMoveLeft = joystick.xValue < 0 ? true : false;
+                _canMoveRight = joystick.xValue > 0 ? true : false;
+                _canMoveUp = joystick.yValue > 0 ? true : false;
+                _canMoveDown = joystick.yValue < 0 ? true : false;
             }
         }
     }

@@ -114,7 +114,14 @@ namespace PIS.PlatformGame
             {
                 Flip(dir);
                 _hozDir = dir == Diretion.Left ? -1 : 1;
-                _rb.velocity = new Vector2(_hozDir * _curSpeed, _rb.velocity.y);
+                if(GameManager.Ins.setting.IsOnMoble)
+                {
+                    _rb.velocity = new Vector2(GamepadController.Ins.joystick.xValue * _curSpeed, _rb.velocity.y);
+                }
+                else
+                {
+                    _rb.velocity = new Vector2(_hozDir * _curSpeed, _rb.velocity.y);
+                }
                 if (CameraFollow.ins.IsHozStuck)
                 {
                     GameManager.Ins.SetMapSpeed(0f);
@@ -127,7 +134,14 @@ namespace PIS.PlatformGame
             else if(dir == Diretion.Up || dir == Diretion.Down)
             {
                 _vertDir = dir == Diretion.Down ? -1 : 1;
-                _rb.velocity = new Vector2(_rb.velocity.x, _vertDir * _curSpeed);
+                if (GameManager.Ins.setting.IsOnMoble)
+                {
+                    _rb.velocity = new Vector2(_rb.velocity.x, GamepadController.Ins.joystick.yValue * _curSpeed);
+                }
+                else
+                {
+                    _rb.velocity = new Vector2(_rb.velocity.x, _vertDir * _curSpeed);
+                }
             }
         }
         private void WaterCheck()
@@ -185,7 +199,7 @@ namespace PIS.PlatformGame
             {
                 if (_isAttacked) return;
                     ChangeState(PlayerAnimState.Attack);
-            }else if (GamepadController.Ins.CanFire)
+            }else if (GamepadController.Ins.CanFire && GameManager.Ins.CurBullet > 0)
             {
                 ChangeState(PlayerAnimState.Bullet);
             }
