@@ -43,7 +43,7 @@ namespace PIS.PlatformGame
             {
                 Instantiate(destroyVfxPb, transform.position, Quaternion.identity);
             }
-            // play sound
+            AudioController.Ins.PlaySound(collisionSfx);
             Destroy(gameObject);
         }
     }

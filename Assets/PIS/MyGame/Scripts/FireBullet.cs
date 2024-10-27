@@ -18,6 +18,7 @@ namespace PIS.PlatformGame
             var bulletClone = Instantiate(bulletPb, firePoint.position, Quaternion.identity);
             bulletClone.speed = _curSpeed;
             GameManager.Ins.ReduceBullet();
+            AudioController.Ins.PlaySound(AudioController.Ins.fireBullet);
         }
     }
 

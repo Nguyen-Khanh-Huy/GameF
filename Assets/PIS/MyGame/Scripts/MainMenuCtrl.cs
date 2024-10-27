@@ -18,6 +18,7 @@ namespace PIS.PlatformGame
                 LevelManager.Ins.Init();
             }
             Pref.IsFirstTime = false;
+            AudioController.Ins.PlayMusic(AudioController.Ins.menus);
         }
     }
 }

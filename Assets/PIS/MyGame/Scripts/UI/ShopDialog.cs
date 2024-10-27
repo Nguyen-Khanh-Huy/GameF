@@ -70,6 +70,7 @@ namespace PIS.PlatformGame
                 }
                 GameData.Ins.SaveData();
                 UpdateShopDialog();
+                AudioController.Ins.PlaySound(AudioController.Ins.buy);
             }
             else
             {

@@ -190,5 +190,5 @@ MonoBehaviour:
   collectableType: 1
   minBonus: 1
   maxBonus: 1
-  collisionSfx: {fileID: 0}
+  collisionSfx: {fileID: 8300000, guid: ae1b3333a4d1ba34bb98f16e52b00943, type: 3}
   destroyVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}

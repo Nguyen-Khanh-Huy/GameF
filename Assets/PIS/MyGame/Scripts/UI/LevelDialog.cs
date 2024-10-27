@@ -71,6 +71,7 @@ namespace PIS.PlatformGame
                     UpdateLevelDialog();
 
                     SceneController.Ins.LoadLevelScene(levelIdx);
+                    AudioController.Ins.PlaySound(AudioController.Ins.unlock);
                 }
                 else
                 {

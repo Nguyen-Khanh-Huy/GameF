@@ -47,6 +47,7 @@ namespace PIS.PlatformGame
             {
                 GUIManager.Ins.ShowMobileGamepad(false);
             }
+            AudioController.Ins.PlayBackgroundMusic();
         }
         private void LoadData()
         {
@@ -135,7 +136,7 @@ namespace PIS.PlatformGame
                 player.transform.position.z));
             GameData.Ins.SaveData();
         }
-        public void GameOver()
+        public void LevelFail()
         {
             _fsm.ChangeState(GameState.GameOver);
             GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurLevelId, Mathf.RoundToInt(_gameplayTime));
@@ -144,6 +145,7 @@ namespace PIS.PlatformGame
             {
                 GUIManager.Ins.levelFailDialog.Show(true);
             }
+            AudioController.Ins.PlaySound(AudioController.Ins.fail);
         }
         public void LevelClear()
         {
@@ -155,6 +157,7 @@ namespace PIS.PlatformGame
             {
                 GUIManager.Ins.levelClearDialog.Show(true);
             }
+            AudioController.Ins.PlaySound(AudioController.Ins.missionComplete);
         }
         private IEnumerator CamFollowDelay()
         {

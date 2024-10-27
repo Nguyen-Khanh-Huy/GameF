@@ -15,6 +15,11 @@ namespace PIS.PlatformGame
         public void AttackCamera()
         {
             CamShake.ins.ShakeTrigger(0.3f, 0.1f, 1);
+            AudioController.Ins.PlaySound(AudioController.Ins.attack);
+        }
+        public void AudioWalk()
+        {
+            AudioController.Ins.PlaySound(AudioController.Ins.footStep);
         }
         public void Attack()
         {
@@ -47,11 +52,11 @@ namespace PIS.PlatformGame
                 }
             }
         }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Helper.ChangAlpha(Color.green, 0.4f);
-            Gizmos.DrawSphere(transform.position + offset, attackRadius);
-        }
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.color = Helper.ChangAlpha(Color.green, 0.4f);
+        //    Gizmos.DrawSphere(transform.position + offset, attackRadius);
+        //}
     }
 
 }

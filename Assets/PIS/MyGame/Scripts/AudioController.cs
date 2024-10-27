@@ -4,14 +4,12 @@ using UnityEngine;
 
 namespace PIS.PlatformGame
 {
-    public class AudioController : MonoBehaviour
+    public class AudioController : Singleton<AudioController>
     {
-        public static AudioController ins;
-
         [Header("Main Settings:")]
         [Range(0, 1)]
         public float musicVolume = 0.3f;
-        /// the sound fx volume
+
         [Range(0, 1)]
         public float sfxVolume = 1f;
 
@@ -35,16 +33,6 @@ namespace PIS.PlatformGame
         public AudioClip[] bgms;
         public AudioClip[] menus;
 
-        private void Awake()
-        {
-            MakeSingleton();
-        }
-
-        /// <summary>
-        /// Play Sound Effect
-        /// </summary>
-        /// <param name="clips">Array of sounds</param>
-        /// <param name="aus">Audio Source</param>
         public void PlaySound(AudioClip[] clips, AudioSource aus = null)
         {
             if (!aus)
@@ -59,11 +47,6 @@ namespace PIS.PlatformGame
             }
         }
 
-        /// <summary>
-        /// Play Sound Effect
-        /// </summary>
-        /// <param name="clip">Sounds</param>
-        /// <param name="aus">Audio Source</param>
         public void PlaySound(AudioClip clip, AudioSource aus = null)
         {
             if (!aus)
@@ -77,11 +60,6 @@ namespace PIS.PlatformGame
             }
         }
 
-        /// <summary>
-        /// Play Music
-        /// </summary>
-        /// <param name="musics">Array of musics</param>
-        /// <param name="loop">Can Loop</param>
         public void PlayMusic(AudioClip[] musics, bool loop = true)
         {
             if (musicAus && musics != null && musics.Length > 0)
@@ -95,11 +73,6 @@ namespace PIS.PlatformGame
             }
         }
 
-        /// <summary>
-        /// Play Music
-        /// </summary>
-        /// <param name="music">music</param>
-        /// <param name="canLoop">Can Loop</param>
         public void PlayMusic(AudioClip music, bool canLoop)
         {
             if (musicAus && music != null)
@@ -111,18 +84,11 @@ namespace PIS.PlatformGame
             }
         }
 
-        /// <summary>
-        /// Set volume for audiosource
-        /// </summary>
-        /// <param name="vol">New Volume</param>
         public void SetMusicVolume(float vol)
         {
             if (musicAus) musicAus.volume = vol;
         }
 
-        /// <summary>
-        /// Stop play music or sound effect
-        /// </summary>
         public void StopPlayMusic()
         {
             if (musicAus) musicAus.Stop();
@@ -131,19 +97,6 @@ namespace PIS.PlatformGame
         public void PlayBackgroundMusic()
         {
             PlayMusic(bgms, true);
-        }
-
-        void MakeSingleton()
-        {
-            if (ins == null)
-            {
-                ins = this;
-                DontDestroyOnLoad(this);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
         }
     }
 

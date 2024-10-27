@@ -371,6 +371,7 @@ namespace PIS.PlatformGame
         private void Walk_Exit() { }
         private void Jump_Enter() {
             ActiveCol(PlayerCollider.Default);
+            AudioController.Ins.PlaySound(AudioController.Ins.jump);
         }
         private void Jump_Update() {
             _rb.isKinematic = false;
@@ -412,6 +413,7 @@ namespace PIS.PlatformGame
         private void Land_Enter() {
             ActiveCol(PlayerCollider.Default);
             ChangeStateDelay(PlayerAnimState.Idle);
+            AudioController.Ins.PlaySound(AudioController.Ins.land);
         }
         private void Land_Update() {
             _rb.velocity = Vector2.zero;
@@ -531,6 +533,7 @@ namespace PIS.PlatformGame
         private void Ladder_Exit() { }
         private void Dead_Enter() {
             CamShake.ins.ShakeTrigger(0.5f, 0.2f, 1);
+            AudioController.Ins.PlaySound(AudioController.Ins.dead);
         }
         private void Dead_Update() {
             GUIManager.Ins.UpdateHp(_curHp);
@@ -576,7 +579,9 @@ namespace PIS.PlatformGame
             Helper.PlayAnim(_anim, PlayerAnimState.LadderIdle.ToString());
         }
         private void LadderIdle_Exit() { }
-        private void GotHit_Enter() { }
+        private void GotHit_Enter() {
+            AudioController.Ins.PlaySound(AudioController.Ins.getHit);
+        }
         private void GotHit_Update() {
             if (_isKnockBack)
             {

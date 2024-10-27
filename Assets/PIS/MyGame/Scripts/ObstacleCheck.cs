@@ -39,14 +39,14 @@ namespace PIS.PlatformGame
             Collider2D col = Physics2D.OverlapCircle(transform.position + offSet, checkingRadius, layerToCheck);
             return col != null;
         }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Helper.ChangAlpha(Color.red, 0.4f);
-            Gizmos.DrawSphere(transform.position + offSet, checkingRadius);
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.color = Helper.ChangAlpha(Color.red, 0.4f);
+        //    Gizmos.DrawSphere(transform.position + offSet, checkingRadius);
 
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position + deepWaterOffset, new Vector3(transform.position.x + deepWaterOffset.x, transform.position.y + deepWaterOffset.y + deepWater, transform.position.z));
-        }
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawLine(transform.position + deepWaterOffset, new Vector3(transform.position.x + deepWaterOffset.x, transform.position.y + deepWaterOffset.y + deepWater, transform.position.z));
+        //}
     }
 
 }
