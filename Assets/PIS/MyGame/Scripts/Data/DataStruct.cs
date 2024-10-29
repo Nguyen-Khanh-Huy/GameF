@@ -16,8 +16,8 @@ namespace PIS.PlatformGame
     {
         Starting,
         Playing,
-        Win,
-        GameOver
+        LevelClear,
+        LevelFail
     }
     public enum GamePref
     {

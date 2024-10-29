@@ -102,9 +102,16 @@ namespace PIS.PlatformGame
         }
         protected override void Dead()
         {
-            base.Dead();
             if (IsDead) return;
-            ChangeState(PlayerAnimState.Dead);
+            if(GameManager.Ins.CurLive > 0)
+            {
+                GameManager.Ins.Revice();
+            }
+            else
+            {
+                base.Dead();
+                ChangeState(PlayerAnimState.Dead);
+            }
         }
         private void Move(Diretion dir)
         {
@@ -345,6 +352,8 @@ namespace PIS.PlatformGame
         #region FSM
         private void SayHello_Enter() { }
         private void SayHello_Update() {
+            gameObject.layer = invincibleLayer;
+            _rb.velocity = Vector3.zero;
             Helper.PlayAnim(_anim, PlayerAnimState.SayHello.ToString());
         }
         private void SayHello_Exit() { }
@@ -534,6 +543,7 @@ namespace PIS.PlatformGame
         private void Dead_Enter() {
             CamShake.ins.ShakeTrigger(0.5f, 0.2f, 1);
             AudioController.Ins.PlaySound(AudioController.Ins.dead);
+            GameManager.Ins.LevelFail();
         }
         private void Dead_Update() {
             GUIManager.Ins.UpdateHp(_curHp);
@@ -589,7 +599,15 @@ namespace PIS.PlatformGame
             }
             else if (obstacle.IsOnWater)
             {
-                ChangeState(_prevState);
+                //ChangeState(_prevState);
+                if (obstacle.IsOnDeepWater)
+                {
+                    ChangeState(PlayerAnimState.SwimOnDeep);
+                }
+                else if(obstacle.IsOnWater)
+                {
+                    ChangeState(PlayerAnimState.Swim);
+                }
             }
             else
             {

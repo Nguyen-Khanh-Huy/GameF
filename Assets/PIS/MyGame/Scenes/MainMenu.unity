@@ -742,7 +742,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 146611852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1855394732}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.SettingDialog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &146611852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,9 +1194,9 @@ MonoBehaviour:
   - price: 0
     preview: {fileID: 21300000, guid: 0d60a21c604ee974d968924a2067780d, type: 3}
     goal:
-      timeOneStar: 0
-      timeTwoStar: 0
-      timeThreeStar: 0
+      timeOneStar: 180
+      timeTwoStar: 120
+      timeThreeStar: 60
   - price: 300
     preview: {fileID: 21300000, guid: 62f6b8024f2a89e498da52de90c95ec3, type: 3}
     goal:
@@ -6210,6 +6222,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1986188396822681881, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
   m_PrefabInstance: {fileID: 7891415374458482036}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855394732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8073146299257787234, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
+  m_PrefabInstance: {fileID: 7891415374458482036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0058ecbe408bd9d4aa178e90b1776aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911070114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,6 +7660,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1986188396822681881, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989237949453715559, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900624477057539832, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638341165863102975, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872154201033540982, guid: 3182e505e8aca1147803329f52feeb54, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

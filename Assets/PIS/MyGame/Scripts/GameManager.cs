@@ -95,7 +95,10 @@ namespace PIS.PlatformGame
             _curLive--;
             player.CurHp = player.stat.hp;
             GameData.Ins.hp = player.CurHp;
+            GameData.Ins.life = _curLive;
             GameData.Ins.SaveData();
+            BackToCheckPoint();
+            GUIManager.Ins.UpdateLive(_curLive);
         }
         public void AddCoins(int coins)
         {
@@ -131,16 +134,21 @@ namespace PIS.PlatformGame
         {
             GameData.Ins.UpdatePlayTime(LevelManager.Ins.CurLevelId, _gameplayTime);
             GameData.Ins.UpdateCheckPoint(LevelManager.Ins.CurLevelId,
-                new Vector3(player.transform.position.x - 0.5f,
-                player.transform.position.y + 0.5f,
+                new Vector3(player.transform.position.x,
+                player.transform.position.y,
                 player.transform.position.z));
             GameData.Ins.SaveData();
         }
         public void LevelFail()
         {
-            _fsm.ChangeState(GameState.GameOver);
+            _fsm.ChangeState(GameState.LevelFail);
             GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurLevelId, Mathf.RoundToInt(_gameplayTime));
             GameData.Ins.SaveData();
+            StartCoroutine(ShowLevelFail());
+        }
+        private IEnumerator ShowLevelFail()
+        {
+            yield return new WaitForSeconds(1);
             if (GUIManager.Ins.levelFailDialog != null)
             {
                 GUIManager.Ins.levelFailDialog.Show(true);
@@ -149,11 +157,16 @@ namespace PIS.PlatformGame
         }
         public void LevelClear()
         {
-            _fsm.ChangeState(GameState.Win);
+            _fsm.ChangeState(GameState.LevelClear);
             GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurLevelId, Mathf.RoundToInt(_gameplayTime));
             _goalStar = LevelManager.Ins.CurLevel.goal.GetStar(Mathf.RoundToInt(_gameplayTime));
             GameData.Ins.SaveData();
-            if(GUIManager.Ins.levelClearDialog != null)
+            StartCoroutine(ShowLevelClear());
+        }
+        private IEnumerator ShowLevelClear()
+        {
+            yield return new WaitForSeconds(1);
+            if (GUIManager.Ins.levelClearDialog != null)
             {
                 GUIManager.Ins.levelClearDialog.Show(true);
             }
@@ -182,12 +195,12 @@ namespace PIS.PlatformGame
             GUIManager.Ins.UpdateTime(Helper.TimeConvert(_gameplayTime));
         }
         protected void Playing_Exit() { }
-        protected void Win_Enter() { }
-        protected void Win_Update() { }
-        protected void Win_Exit() { }
-        protected void GameOver_Enter() { }
-        protected void GameOver_Update() { }
-        protected void GameOver_Exit() { }
+        protected void LevelClear_Enter() { }
+        protected void LevelClear_Update() { }
+        protected void LevelClear_Exit() { }
+        protected void LevelFail_Enter() { }
+        protected void LevelFail_Update() { }
+        protected void LevelFail_Exit() { }
         #endregion
     }
 }

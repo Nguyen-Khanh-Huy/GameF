@@ -14,11 +14,15 @@ namespace PIS.PlatformGame
             }
             else
             {
-                //GameData.Ins.SaveData();
+                GameData.Ins.musicVol = AudioController.Ins.musicVolume;
+                GameData.Ins.soundVol = AudioController.Ins.sfxVolume;
+                GameData.Ins.SaveData();
                 LevelManager.Ins.Init();
             }
-            Pref.IsFirstTime = false;
+            AudioController.Ins.SetMusicVolume(GameData.Ins.musicVol);
+            AudioController.Ins.SetSoundVolume(GameData.Ins.soundVol);
             AudioController.Ins.PlayMusic(AudioController.Ins.menus);
+            Pref.IsFirstTime = false;
         }
     }
 }

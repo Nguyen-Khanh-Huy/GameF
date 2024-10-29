@@ -35,15 +35,15 @@ namespace PIS.PlatformGame
         }
         public void UpdateLive(int live)
         {
-            UpdateTxt(txtLiveCount, live.ToString());
+            UpdateTxt(txtLiveCount, "x" + live.ToString());
         }
         public void UpdateHp(int hp)
         {
-            UpdateTxt(txtHpCount, hp.ToString());
+            UpdateTxt(txtHpCount, "x" + hp.ToString());
         }
         public void UpdateCoin(int coin)
         {
-            UpdateTxt(txtCoinCount, coin.ToString());
+            UpdateTxt(txtCoinCount, "x" + coin.ToString());
         }
         public void UpdateTime(string time)
         {
@@ -51,7 +51,7 @@ namespace PIS.PlatformGame
         }
         public void UpdateKey(int key)
         {
-            UpdateTxt(txtKeyCount, key.ToString());
+            UpdateTxt(txtKeyCount, "x" + key.ToString());
         }
         public void UpdateBullet(int bullet)
         {

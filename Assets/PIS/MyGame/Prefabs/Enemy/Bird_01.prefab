@@ -263,4 +263,4 @@ MonoBehaviour:
   flashVfx: {fileID: 4868246165801446330}
   deadVfxPb: {fileID: 8418237483187873995, guid: 4b5e730d25f15614d9f47e41dedbb039, type: 3}
   movingDist: 3
-  canRotate: 1
+  canRotate: 0

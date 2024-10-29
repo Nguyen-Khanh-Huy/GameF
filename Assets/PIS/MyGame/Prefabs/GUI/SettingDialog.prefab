@@ -262,6 +262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleText: {fileID: 0}
   contentText: {fileID: 0}
+  musicSlider: {fileID: 7068290124649326009}
+  soundSlider: {fileID: 4488595962113467645}
 --- !u!1 &1995883006488300936
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +637,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8073146299257787234}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.SettingDialog, Assembly-CSharp
+        m_MethodName: OnSoundChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2670635001148440141
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +769,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8014598153829208293}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8073146299257787234}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.SettingDialog, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2868829011544154051
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +980,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5742407895719397791}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8073146299257787234}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.SettingDialog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3708449705143196134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1229,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8073146299257787234}
+        m_TargetAssemblyTypeName: PIS.PlatformGame.SettingDialog, Assembly-CSharp
+        m_MethodName: OnMusicChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5479901123786105651
 GameObject:
   m_ObjectHideFlags: 0

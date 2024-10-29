@@ -114,23 +114,23 @@ namespace PIS.PlatformGame
         }
 
         #endregion
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + movingDist, transform.position.y, transform.position.z));
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + movingDist, transform.position.y, transform.position.z));
             
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - movingDist, transform.position.y, transform.position.z));
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - movingDist, transform.position.y, transform.position.z));
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - movingDist, transform.position.z));
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - movingDist, transform.position.z));
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + movingDist, transform.position.z));
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + movingDist, transform.position.z));
 
-            Gizmos.color = Helper.ChangAlpha(Color.black, 0.5f);
-            Gizmos.DrawSphere(_movingPos, 0.2f);
-        }
+        //    Gizmos.color = Helper.ChangAlpha(Color.black, 0.5f);
+        //    Gizmos.DrawSphere(_movingPos, 0.2f);
+        //}
     }
 
 }

@@ -34,7 +34,9 @@ namespace PIS.PlatformGame
         {
             if (_isOpened)
             {
+                GameManager.Ins.CurKey = 0;
                 GameManager.Ins.LevelClear();
+                GUIManager.Ins.UpdateKey(GameManager.Ins.CurKey);
                 return;
             }
             if(GameManager.Ins.CurKey >= keyRequired)
@@ -46,6 +48,7 @@ namespace PIS.PlatformGame
                 GameData.Ins.SaveData();
                 GameManager.Ins.LevelClear();
                 DoorCheck();
+                GUIManager.Ins.UpdateKey(GameManager.Ins.CurKey);
             }
         }
     }

@@ -18,8 +18,8 @@ MonoBehaviour:
   knockBackTime: 0.2
   knockBackForce: 3
   invincibleTime: 0.8
-  jumpForce: 11
+  jumpForce: 12
   flyingSpeed: 1.5
-  ladderSpeed: 2
-  swimSpeed: 4
+  ladderSpeed: 3
+  swimSpeed: 3
   attackRate: 0.7

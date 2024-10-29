@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace PIS.PlatformGame
@@ -90,11 +89,11 @@ namespace PIS.PlatformGame
             {
                 case Diretion.Left:
                     _rb.velocity = new Vector2(-speed, _rb.velocity.y);
-                    transform.position = new Vector2(transform.position.x, _startingPos.y);
+                    //transform.position = new Vector2(transform.position.x, _startingPos.y);
                     break;
                 case Diretion.Right:
                     _rb.velocity = new Vector2(speed, _rb.velocity.y);
-                    transform.position = new Vector2(transform.position.x, _startingPos.y);
+                    //transform.position = new Vector2(transform.position.x, _startingPos.y);
                     break;
                 case Diretion.Up:
                     _rb.velocity = new Vector2(_rb.velocity.x, speed);
